@@ -64,7 +64,7 @@ const About = () => {
           <div className="about-card-image">
             {/* Replace with your actual photo */}
             <img
-              src="portfoliophoto.png"
+              src="portfolio-Photoroom.png"
               alt="Bhavesh D Pathak"
               onError={(e) => {
                 e.target.style.display = 'none';
