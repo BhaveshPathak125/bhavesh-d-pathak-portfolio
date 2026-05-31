@@ -1,0 +1,194 @@
+/* ============================================
+   NAVBAR — Retractable + Transparent Blur
+   ============================================ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 16px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Transparent blur background */
+  background: rgba(6, 6, 11, 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(65, 105, 225, 0.08);
+  transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar.scrolled {
+  padding: 12px 60px;
+  background: rgba(6, 6, 11, 0.6);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  border-bottom-color: rgba(65, 105, 225, 0.12);
+}
+
+/* ── Collapsed state ── */
+.navbar.collapsed {
+  transform: translateY(-100%);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.navbar-logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--royal-blue-light), var(--royal-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.navbar-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  position: relative;
+  padding: 4px 0;
+  transition: color var(--transition-fast);
+}
+
+.navbar-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--royal-blue);
+  transition: width var(--transition-smooth);
+  border-radius: 1px;
+}
+
+.navbar-links a:hover {
+  color: var(--text-primary);
+}
+
+.navbar-links a:hover::after {
+  width: 100%;
+}
+
+/* ── Action buttons area ── */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Collapse / Expand button ── */
+.navbar-collapse-btn {
+  background: rgba(65, 105, 225, 0.1);
+  border: 1px solid rgba(65, 105, 225, 0.2);
+  color: var(--royal-blue-light);
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navbar-collapse-btn:hover {
+  background: rgba(65, 105, 225, 0.2);
+  border-color: var(--royal-blue);
+  transform: scale(1.05);
+}
+
+/* ── Floating expand pill (appears when navbar is collapsed) ── */
+.navbar-expand-pill {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  background: rgba(6, 6, 11, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(65, 105, 225, 0.2);
+  color: var(--royal-blue-light);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 15px var(--royal-blue-glow);
+  animation: pillBounce 2s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.navbar-expand-pill:hover {
+  background: rgba(65, 105, 225, 0.15);
+  border-color: var(--royal-blue);
+  transform: translateX(-50%) scale(1.1);
+  animation: none;
+}
+
+@keyframes pillBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(4px); }
+}
+
+/* ── Mobile ── */
+.navbar-mobile-toggle {
+  display: none;
+  background: none;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  padding: 4px;
+  cursor: pointer;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 14px 20px;
+  }
+
+  .navbar-mobile-toggle {
+    display: block;
+  }
+
+  .navbar-collapse-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+  }
+
+  .navbar-links {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(6, 6, 11, 0.95);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    flex-direction: column;
+    padding: 30px;
+    gap: 24px;
+    transform: translateY(-120%);
+    transition: transform var(--transition-smooth);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .navbar-links.open {
+    transform: translateY(0);
+  }
+}

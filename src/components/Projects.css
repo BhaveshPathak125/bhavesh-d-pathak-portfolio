@@ -1,0 +1,218 @@
+/* ============================================
+   PROJECTS SECTION
+   ============================================ */
+
+.projects {
+  background: var(--bg-secondary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.projects-bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 20px;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Bento layout variations */
+.project-card:nth-child(1) {
+  grid-column: span 2;
+}
+
+.project-card:nth-child(2) {
+  grid-column: span 1;
+}
+
+.project-card:nth-child(3) {
+  grid-column: span 1;
+}
+
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+}
+
+.project-card:hover {
+  border-color: var(--border-glow);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 40px var(--royal-blue-glow);
+}
+
+.project-card-image {
+  width: 100%;
+  height: 220px;
+  background: linear-gradient(135deg, var(--bg-card-hover), var(--royal-blue-dark));
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+
+.project-card:hover .project-card-image img {
+  transform: scale(1.05);
+}
+
+.project-card-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--bg-card) 0%, transparent 60%);
+}
+
+.project-card-status {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 5px 12px;
+  background: rgba(65, 105, 225, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--royal-blue-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.project-card-body {
+  padding: 24px;
+}
+
+.project-card-date {
+  font-size: 0.75rem;
+  color: var(--royal-blue);
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+}
+
+.project-card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+  transition: color var(--transition-fast);
+}
+
+.project-card:hover .project-card-title {
+  color: var(--royal-blue-light);
+}
+
+.project-card-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.project-card-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-tech-pill {
+  padding: 5px 12px;
+  background: var(--royal-blue-subtle);
+  border: 1px solid rgba(65, 105, 225, 0.1);
+  border-radius: 8px;
+  font-size: 0.75rem;
+  color: var(--royal-blue-light);
+  font-weight: 500;
+  font-family: var(--font-mono);
+  transition: all var(--transition-fast);
+}
+
+.project-tech-pill:hover {
+  border-color: var(--royal-blue);
+  background: rgba(65, 105, 225, 0.15);
+}
+
+/* Expanded detail overlay */
+.project-card-detail {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 12, 20, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-smooth);
+}
+
+.project-card:hover .project-card-detail {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.project-card-detail h3 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.project-card-detail p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.project-card-detail .project-card-tech {
+  margin-bottom: 20px;
+}
+
+.project-detail-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: linear-gradient(135deg, var(--royal-blue), var(--royal-blue-dark));
+  border-radius: 10px;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+  width: fit-content;
+  transition: all var(--transition-fast);
+}
+
+.project-detail-link:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 15px var(--royal-blue-glow);
+}
+
+@media (max-width: 768px) {
+  .projects-bento {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card:nth-child(1),
+  .project-card:nth-child(2),
+  .project-card:nth-child(3) {
+    grid-column: span 1;
+  }
+
+  .project-card-image {
+    height: 180px;
+  }
+}
