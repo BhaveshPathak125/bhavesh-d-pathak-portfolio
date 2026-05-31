@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { HiAcademicCap, HiBriefcase, HiBadgeCheck, HiStar } from 'react-icons/hi';
+import profilePhoto from '../assets/portfolio-Photoroom.png';
 import './About.css';
 
 const About = () => {
@@ -64,7 +65,7 @@ const About = () => {
           <div className="about-card-image">
             {/* Replace with your actual photo */}
             <img
-              src="portfolio-Photoroom.png"
+              src={profilePhoto}
               alt="Bhavesh D Pathak"
               onError={(e) => {
                 e.target.style.display = 'none';
