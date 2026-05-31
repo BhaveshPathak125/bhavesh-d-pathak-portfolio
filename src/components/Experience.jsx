@@ -62,7 +62,7 @@ const experienceData = [
   {
     company: 'BlackHole Infiverse',
     role: 'AI & ML Intern',
-    type: 'Full-time',
+    type: 'Internship',
     duration: 'Jun 2025 – Nov 2025',
     length: '6 months',
     location: 'Goregaon, Maharashtra · On-site',
