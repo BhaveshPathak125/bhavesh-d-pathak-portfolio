@@ -322,19 +322,20 @@
 
 @media (max-width: 900px) {
   .experience-track {
-    height: auto;
+    height: 1300px;
     min-height: 1300px;
   }
 
   .experience-svg {
-    left: 30px;
+    left: -110px;
     transform: none;
-    width: 60px;
+    width: 300px;
   }
 
   .exp-card {
-    width: calc(100% - 120px);
-    left: 100px !important;
+    width: calc(100% - 80px);
+    max-width: 450px;
+    left: 75px !important;
     right: auto !important;
   }
 
@@ -356,20 +357,30 @@
 
 @media (max-width: 600px) {
   .experience-svg {
-    left: 15px;
-    width: 40px;
+    left: -120px;
+    width: 300px;
   }
 
   .exp-card {
-    width: calc(100% - 80px);
-    left: 70px !important;
+    width: calc(100% - 65px);
+    left: 60px !important;
   }
 
   .exp-card-content {
-    padding: 18px;
+    padding: 16px;
   }
 
   .exp-card-company {
     font-size: 0.95rem;
+  }
+
+  .exp-card-desc {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+
+  .exp-card-meta {
+    margin-bottom: 8px;
   }
 }

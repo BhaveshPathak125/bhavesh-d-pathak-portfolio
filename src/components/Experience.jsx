@@ -85,9 +85,23 @@ const Experience = () => {
   const [progress, setProgress] = useState(0);
   const [ballPos, setBallPos] = useState({ x: 150, y: 60 });
   const [activeIndex, setActiveIndex] = useState(-1);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 900);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const currentPath = isMobile 
+    ? 'M 150 60 L 150 1200'
+    : PATH_D;
 
   /* Checkpoint positions along the path (0–1) */
-  const checkpoints = [0.1, 0.28, 0.48, 0.68, 0.88];
+  const checkpoints = isMobile 
+    ? [0.08, 0.28, 0.48, 0.68, 0.88]
+    : [0.1, 0.28, 0.48, 0.68, 0.88];
 
   /* ── Fade-in observer for section title ── */
   useEffect(() => {
@@ -136,9 +150,10 @@ const Experience = () => {
     if (!pathRef.current) return;
     const pathEl = pathRef.current;
     const len = pathEl.getTotalLength();
+    if (len === 0) return;
     const point = pathEl.getPointAtLength(progress * len);
     setBallPos({ x: point.x, y: point.y });
-  }, [progress]);
+  }, [progress, isMobile]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -171,14 +186,14 @@ const Experience = () => {
         >
           {/* Background dashed path */}
           <path
-            d={PATH_D}
+            d={currentPath}
             className="exp-path-bg"
           />
 
           {/* Traced (filled) path */}
           <path
             ref={pathRef}
-            d={PATH_D}
+            d={currentPath}
             className="exp-path-traced"
             style={{
               strokeDashoffset: pathRef.current
