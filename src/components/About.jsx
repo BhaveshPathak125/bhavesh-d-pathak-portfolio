@@ -94,7 +94,7 @@ const About = () => {
           <div className="about-panel-item">
             <h4>Education</h4>
             <p>B.E. in AI & Data Science</p>
-            <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>CGPA: 8.49</p>
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>CGPA: 8.57</p>
           </div>
 
           <div className="about-panel-item">
